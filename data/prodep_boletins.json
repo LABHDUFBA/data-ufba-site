@@ -1,0 +1,306 @@
+{
+ "format": "prodep-site-panel-v1",
+ "generated": "2026-09-23",
+ "source": "LABHDUFBA/data-ufba · data/boletins-prodep — manifest.jsonl, analitico/resumo-anual.json, occurrence-inventory.json",
+ "note": "Agregações apenas; nenhum registro nominal. Taxonomia interpretativa não incluída (em revisão institucional).",
+ "global": {
+  "occurrences": 196465,
+  "people_year": 102085,
+  "people_exact": 19927,
+  "labels": 265,
+  "max_annual_labels": 91,
+  "years_covered": 37,
+  "period": "1990–2026",
+  "bulletins": 7123,
+  "bulletins_failed": 10,
+  "first_publication": "1990-01-23",
+  "last_publication": "2026-08-21",
+  "catalog_last_date": "2026-12-01"
+ },
+ "years": {
+  "1990": {
+   "occurrences": 126,
+   "distinct_people": 126,
+   "distinct_labels": 5,
+   "bulletins": 24
+  },
+  "1991": {
+   "occurrences": 125,
+   "distinct_people": 123,
+   "distinct_labels": 8,
+   "bulletins": 23
+  },
+  "1992": {
+   "occurrences": 91,
+   "distinct_people": 91,
+   "distinct_labels": 7,
+   "bulletins": 28
+  },
+  "1993": {
+   "occurrences": 94,
+   "distinct_people": 89,
+   "distinct_labels": 10,
+   "bulletins": 59
+  },
+  "1994": {
+   "occurrences": 169,
+   "distinct_people": 161,
+   "distinct_labels": 10,
+   "bulletins": 71
+  },
+  "1995": {
+   "occurrences": 140,
+   "distinct_people": 139,
+   "distinct_labels": 6,
+   "bulletins": 70
+  },
+  "1996": {
+   "occurrences": 91,
+   "distinct_people": 85,
+   "distinct_labels": 14,
+   "bulletins": 45
+  },
+  "1997": {
+   "occurrences": 167,
+   "distinct_people": 157,
+   "distinct_labels": 27,
+   "bulletins": 71
+  },
+  "1998": {
+   "occurrences": 589,
+   "distinct_people": 428,
+   "distinct_labels": 36,
+   "bulletins": 90
+  },
+  "1999": {
+   "occurrences": 724,
+   "distinct_people": 535,
+   "distinct_labels": 36,
+   "bulletins": 126
+  },
+  "2000": {
+   "occurrences": 1814,
+   "distinct_people": 1301,
+   "distinct_labels": 41,
+   "bulletins": 138
+  },
+  "2001": {
+   "occurrences": 2327,
+   "distinct_people": 1676,
+   "distinct_labels": 48,
+   "bulletins": 156
+  },
+  "2002": {
+   "occurrences": 4256,
+   "distinct_people": 2538,
+   "distinct_labels": 55,
+   "bulletins": 202
+  },
+  "2003": {
+   "occurrences": 5477,
+   "distinct_people": 2706,
+   "distinct_labels": 56,
+   "bulletins": 219
+  },
+  "2004": {
+   "occurrences": 4492,
+   "distinct_people": 2590,
+   "distinct_labels": 58,
+   "bulletins": 213
+  },
+  "2005": {
+   "occurrences": 4551,
+   "distinct_people": 2172,
+   "distinct_labels": 61,
+   "bulletins": 231
+  },
+  "2006": {
+   "occurrences": 4945,
+   "distinct_people": 2571,
+   "distinct_labels": 67,
+   "bulletins": 240
+  },
+  "2007": {
+   "occurrences": 5199,
+   "distinct_people": 2918,
+   "distinct_labels": 62,
+   "bulletins": 220
+  },
+  "2008": {
+   "occurrences": 10266,
+   "distinct_people": 4803,
+   "distinct_labels": 63,
+   "bulletins": 250
+  },
+  "2009": {
+   "occurrences": 9026,
+   "distinct_people": 4741,
+   "distinct_labels": 69,
+   "bulletins": 246
+  },
+  "2010": {
+   "occurrences": 8463,
+   "distinct_people": 4227,
+   "distinct_labels": 67,
+   "bulletins": 240
+  },
+  "2011": {
+   "occurrences": 9254,
+   "distinct_people": 4913,
+   "distinct_labels": 70,
+   "bulletins": 256
+  },
+  "2012": {
+   "occurrences": 10339,
+   "distinct_people": 5128,
+   "distinct_labels": 86,
+   "bulletins": 250
+  },
+  "2013": {
+   "occurrences": 12046,
+   "distinct_people": 5518,
+   "distinct_labels": 89,
+   "bulletins": 255
+  },
+  "2014": {
+   "occurrences": 10552,
+   "distinct_people": 5187,
+   "distinct_labels": 77,
+   "bulletins": 246
+  },
+  "2015": {
+   "occurrences": 8832,
+   "distinct_people": 4586,
+   "distinct_labels": 70,
+   "bulletins": 237
+  },
+  "2016": {
+   "occurrences": 10258,
+   "distinct_people": 4762,
+   "distinct_labels": 81,
+   "bulletins": 241
+  },
+  "2017": {
+   "occurrences": 12126,
+   "distinct_people": 5286,
+   "distinct_labels": 78,
+   "bulletins": 242
+  },
+  "2018": {
+   "occurrences": 11398,
+   "distinct_people": 5237,
+   "distinct_labels": 80,
+   "bulletins": 252
+  },
+  "2019": {
+   "occurrences": 10254,
+   "distinct_people": 4932,
+   "distinct_labels": 91,
+   "bulletins": 268
+  },
+  "2020": {
+   "occurrences": 3525,
+   "distinct_people": 2595,
+   "distinct_labels": 54,
+   "bulletins": 260
+  },
+  "2021": {
+   "occurrences": 3820,
+   "distinct_people": 2534,
+   "distinct_labels": 36,
+   "bulletins": 296
+  },
+  "2022": {
+   "occurrences": 5179,
+   "distinct_people": 3213,
+   "distinct_labels": 44,
+   "bulletins": 295
+  },
+  "2023": {
+   "occurrences": 6153,
+   "distinct_people": 3726,
+   "distinct_labels": 51,
+   "bulletins": 289
+  },
+  "2024": {
+   "occurrences": 5726,
+   "distinct_people": 3327,
+   "distinct_labels": 69,
+   "bulletins": 282
+  },
+  "2025": {
+   "occurrences": 10226,
+   "distinct_people": 4461,
+   "distinct_labels": 68,
+   "bulletins": 298
+  },
+  "2026": {
+   "occurrences": 3645,
+   "distinct_people": 2503,
+   "distinct_labels": 53,
+   "bulletins": 194
+  }
+ },
+ "top_labels": [
+  {
+   "label": "PROGRESSÃO POR MÉRITO",
+   "count": 51190,
+   "years_active": 36
+  },
+  {
+   "label": "AFASTAMENTO NO PAÍS",
+   "count": 23610,
+   "years_active": 30
+  },
+  {
+   "label": "MANUTENÇÃO DE CONTRATO",
+   "count": 14860,
+   "years_active": 25
+  },
+  {
+   "label": "LOTAÇÃO",
+   "count": 10164,
+   "years_active": 25
+  },
+  {
+   "label": "CONTRATAÇÃO",
+   "count": 8824,
+   "years_active": 23
+  },
+  {
+   "label": "PROGRESSÃO POR CAPACITAÇÃO",
+   "count": 8393,
+   "years_active": 20
+  },
+  {
+   "label": "SUBSTITUIÇÃO",
+   "count": 8102,
+   "years_active": 28
+  },
+  {
+   "label": "EXTINÇÃO DE CONTRATO",
+   "count": 6449,
+   "years_active": 19
+  },
+  {
+   "label": "DESIGNAÇÃO/NOMEAÇÃO PARA CARGO EM COMISSÃO",
+   "count": 5997,
+   "years_active": 35
+  },
+  {
+   "label": "AVERBAÇÃO TEMPO SERV INIC PRIVADA/AUTÔNOMO",
+   "count": 5204,
+   "years_active": 23
+  },
+  {
+   "label": "INCENTIVO À QUALIFIC/RETRIB POR TITULAÇÃO",
+   "count": 4708,
+   "years_active": 17
+  },
+  {
+   "label": "FALTA",
+   "count": 4109,
+   "years_active": 23
+  }
+ ]
+}
