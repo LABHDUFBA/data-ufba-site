@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#062f57">
+<meta name="description" content="Mapa temático da pesquisa na UFBA — 26 tópicos identificados por aprendizado de máquina (BGE-M3 + BERTopic) sobre 2.272 currículos Lattes, com enclaves disciplinares e áreas interdisciplinares.">
+<title>Mapa Temático — Central de Dados da UFBA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<!-- Barra oficial gov.br -->
+<script defer src="//barra.brasil.gov.br/barra_2.0.js" type="text/javascript"></script>
+<style>
+:root{--navy-950:#031d35;--navy-900:#062f57;--navy-800:#0b4678;--teal-600:#008c91;--teal-500:#00aeb5;--teal-100:#d8f2f1;--blue-gov:#1351B4;--sand-50:#fbfaf7;--sand-100:#f3f0e9;--white:#fff;--ink:#17212a;--muted:#5b6670;--line:#d9dfe2;--focus:#f0c64a;--font-sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;--font-mono:"IBM Plex Mono",ui-monospace,monospace;--max:1280px;--gutter:clamp(1rem,4vw,3rem)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--sand-50);color:var(--ink);font-family:var(--font-sans);line-height:1.5}
+.container{width:min(var(--max),calc(100% - 2 * var(--gutter)));margin-inline:auto}
+a{color:var(--blue-gov)}
+.skip-link{position:absolute;left:-9999px;background:var(--navy-900);color:#fff;padding:.75rem 1rem;z-index:100}
+.skip-link:focus{left:0}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.eyebrow{margin:0 0 .75rem;color:var(--teal-600);font-family:var(--font-mono);font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.muted{color:var(--muted)}
+#barra-brasil{filter:grayscale(0)}
+.masthead{position:sticky;top:0;z-index:40;background:var(--navy-900);color:var(--white);border-bottom:1px solid rgba(255,255,255,.16)}
+.masthead__inner{min-height:74px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1.5rem}
+.brand{display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--white)}
+.brand img{height:44px;width:auto}
+.brand__divider{width:1px;height:34px;background:rgba(255,255,255,.32)}
+.brand__title{font-size:.98rem;font-weight:500;color:var(--white)}
+.brand__title small{display:block;color:rgba(255,255,255,.68);font-size:.72rem;margin-top:.2rem}
+.nav{justify-self:end;display:flex;align-items:stretch;min-height:74px}
+.nav a{display:inline-flex;align-items:center;padding:0 1rem;color:rgba(255,255,255,.82);text-decoration:none;font-size:.88rem;border-bottom:3px solid transparent}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--white);border-color:var(--teal-500)}
+.intro{background:var(--navy-900);color:var(--white);padding:clamp(2.5rem,6vw,4.5rem) 0 clamp(3.5rem,7vw,5rem);overflow:hidden;background-image:linear-gradient(90deg,rgba(0,174,181,.06) 1px,transparent 1px);background-size:10% 100%}
+.intro h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:300;letter-spacing:-.03em;line-height:1.05;margin-bottom:1rem;max-width:850px}
+.intro__lead{max-width:720px;color:rgba(255,255,255,.79);font-size:clamp(1rem,1.3vw,1.15rem);line-height:1.55}
+.intro__lead .eyebrow{color:#85d9da}
+.section{padding:clamp(2.5rem,6vw,4.5rem) 0}
+.section--alt{background:var(--sand-100)}
+.section h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:300;letter-spacing:-.02em}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;background:var(--line);border-radius:14px;overflow:hidden;margin:-2.5rem auto 0;max-width:var(--max);box-shadow:0 2px 12px rgba(6,47,87,.08);position:relative;z-index:10}
+.stat{background:var(--white);padding:1.15rem 1rem;text-align:center}
+.stat .num{font-size:clamp(1.35rem,2.4vw,1.9rem);font-weight:600;color:var(--navy-900);letter-spacing:-.02em}
+.stat .label{font-size:.76rem;color:var(--muted);margin-top:.15rem}
+.chart-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.4rem 1rem;box-shadow:0 1px 4px rgba(6,47,87,.05)}
+.chart-card h3{font-size:1rem;font-weight:600}
+.chart-card .sub{font-size:.8rem;color:var(--muted);margin:.1rem 0 1rem}
+.hm-legend{display:flex;gap:1rem;align-items:center;margin:.75rem 0 .25rem;font-size:.75rem;color:var(--muted)}
+.hm-legend .sw{width:14px;height:14px;border-radius:3px;display:inline-block;vertical-align:-2px}
+.topic-table{width:100%;border-collapse:collapse;font-size:.85rem;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.topic-table th{background:#557EB5;color:#fff;font-weight:600;text-align:left;padding:.6rem .8rem;border-bottom:1px solid #4a6fa0}
+.topic-table td{padding:.55rem .8rem;border-bottom:1px solid #e8ebee}
+.topic-table tr:last-child td{border-bottom:none}
+.topic-table td.num{text-align:right;font-family:var(--font-mono);font-size:.8rem}
+.tag{font-family:var(--font-mono);font-size:.68rem;font-weight:500;letter-spacing:.04em;text-transform:uppercase;padding:.2rem .55rem;border-radius:999px;white-space:nowrap}
+.tag--enclave{background:#fdeaea;color:#a33}
+.tag--inter{background:var(--teal-100);color:var(--teal-600)}
+.tag--mid{background:#eef1f4;color:var(--muted)}
+.table-wrap{overflow-x:auto;border-radius:12px}
+.filters{display:flex;flex-wrap:wrap;gap:.75rem;margin:1.25rem 0 1.5rem}
+.filters label{font-size:.8rem;color:var(--muted);display:flex;flex-direction:column;gap:.3rem}
+.filters select{font:inherit;padding:.45rem .6rem;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);min-width:200px}
+#heatmap{width:100%;border-collapse:collapse;font-size:.72rem;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+#heatmap th,#heatmap td{padding:.25rem .4rem;text-align:center;border:1px solid #eef1f3}
+#heatmap th{background:#557EB5;color:#fff;font-weight:500;position:sticky;top:0}
+#heatmap td.rot{position:sticky;left:0;background:#fff;text-align:left;font-weight:500;white-space:nowrap;max-width:220px;overflow:hidden;text-overflow:ellipsis}
+#heatmap th.rt{position:sticky;left:0;z-index:2;background:#4a6fa0}
+.hm-scroll{max-height:560px;overflow:auto;border-radius:12px}
+footer{background:var(--navy-950);color:rgba(255,255,255,.75);padding:3rem 0 2rem;font-size:.85rem}
+.footer__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin-bottom:2rem}
+footer h2{font-size:.85rem;color:rgba(255,255,255,.7);margin-bottom:.6rem;font-weight:600}
+footer a{color:rgba(255,255,255,.85)}
+footer ul{list-style:none}
+footer li{margin:.3rem 0}
+.footer__bar{border-top:1px solid rgba(255,255,255,.16);padding-top:1.25rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
+@media(max-width:768px){.masthead__inner{grid-template-columns:auto 1fr}.nav{grid-column:1/-1;min-height:0;overflow-x:auto}.nav a{padding:.5rem .75rem}.stats{grid-template-columns:repeat(2,1fr);margin:-1.5rem 1rem 0}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+<div id="barra-brasil"></div>
+
+<header class="masthead">
+  <div class="container masthead__inner">
+    <a class="brand" href="index.html">
+      <img src="assets/ufba-branco.png" alt="Universidade Federal da Bahia">
+      <span class="brand__divider"></span>
+      <span class="brand__title">Central de Dados<small>data.ufba.br — Universidade Federal da Bahia</small></span>
+    </a>
+    <nav class="nav" aria-label="Seções">
+      <a href="index.html">Iniciativas</a>
+      <a href="#mapa" aria-current="page">Mapa temático</a>
+      <a href="#enclaves">Enclaves × interdisciplinares</a>
+      <a href="#metodologia">Metodologia</a>
+    </nav>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="container">
+    <p class="eyebrow">Aprendizado de máquina sobre currículos Lattes</p>
+    <h1>Mapa Temático da Pesquisa</h1>
+    <p class="intro__lead">Classificação não-supervisionada de 2.272 currículos Lattes de docentes da UFBA em 26 comunidades temáticas — identificando enclaves disciplinares, de fronteiras rígidas, e áreas interdisciplinares, que atravessam a estrutura da universidade.</p>
+  </div>
+</section>
+
+<div class="stats container" role="list" aria-label="Indicadores do mapa temático">
+  <div class="stat" role="listitem"><div class="num">2.272</div><div class="label">Currículos classificados</div></div>
+  <div class="stat" role="listitem"><div class="num">26</div><div class="label">Tópicos temáticos</div></div>
+  <div class="stat" role="listitem"><div class="num">85</div><div class="label">Departamentos</div></div>
+  <div class="stat" role="listitem"><div class="num">7</div><div class="label">Enclaves disciplinares</div></div>
+  <div class="stat" role="listitem"><div class="num">5</div><div class="label">Áreas interdisciplinares</div></div>
+</div>
+
+<main id="conteudo">
+
+<section id="mapa" class="section">
+  <div class="container">
+    <p class="eyebrow">Tópico × departamento</p>
+    <h2 style="margin-bottom:.5rem">Heatmap do mapa temático</h2>
+    <p class="muted" style="margin-bottom:1rem;max-width:62ch">Distribuição dos 26 tópicos por departamento. Intensidade da cor = número de currículos. Passe o mouse para ver os valores.</p>
+    <div class="filters">
+      <label>Unidade acadêmica
+        <select id="filtroUnidade" aria-label="Filtrar departamentos por unidade"><option value="todas">Todas as unidades</option></select>
+      </label>
+    </div>
+    <div class="chart-card">
+      <div class="hm-legend">
+        <span><span class="sw" style="background:#d8f2f1"></span> poucos CVs</span>
+        <span><span class="sw" style="background:#008c91"></span></span>
+        <span><span class="sw" style="background:#062f57"></span> muitos CVs</span>
+      </div>
+      <div class="hm-scroll">
+        <table id="heatmap" aria-label="Matriz de tópicos por departamento"></table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="enclaves" class="section section--alt">
+  <div class="container">
+    <p class="eyebrow">Concentração disciplinar (HHI)</p>
+    <h2 style="margin-bottom:.5rem">Enclaves × interdisciplinares</h2>
+    <p class="muted" style="margin-bottom:1.5rem;max-width:62ch">O índice Herfindahl-Hirschman mede a concentração de cada tópico entre departamentos: acima de 0,4, enclave disciplinar; abaixo de 0,15, área distribuída ou interdisciplinar.</p>
+    <div class="chart-card" style="margin-bottom:2rem">
+      <h3>Concentração por tópico</h3>
+      <p class="sub">HHI por tópico — vermelho: enclave; verde: interdisciplinar</p>
+      <canvas id="chartHHI" role="img" aria-label="Gráfico de concentração HHI por tópico" style="max-height:560px"></canvas>
+    </div>
+    <div class="chart-card">
+      <h3>Os 26 tópicos</h3>
+      <p class="sub">Classificação, tamanho e departamento-sede de cada tópico</p>
+      <div class="table-wrap">
+        <table class="topic-table" id="tabTopicos">
+          <thead><tr><th scope="col">Tópico</th><th scope="col">Descritores</th><th scope="col" class="num">CVs</th><th scope="col" class="num">Depts.</th><th scope="col" class="num">HHI</th><th scope="col">Departamento-sede</th><th scope="col">Classificação</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="metodologia" class="section">
+  <div class="container">
+    <p class="eyebrow">Transparência</p>
+    <h2 style="margin-bottom:.75rem">Fontes e metodologia</h2>
+    <div class="chart-card" style="max-width:860px">
+      <h3>Como este mapa foi produzido</h3>
+      <ul class="muted" style="margin:.75rem 0 0 1.2rem;font-size:.9rem;line-height:1.7">
+        <li><strong>Corpus:</strong> 2.272 currículos Lattes de docentes UFBA (coleta LABHDUFBA, ago/2026), de 85 departamentos. Para cada CV, concatenaram-se resumo, áreas de atuação, linhas, projetos, formação e produções (~12 mil caracteres).</li>
+        <li><strong>Vetorização:</strong> BAAI/bge-m3 (multilingue, 1024 dimensões, contexto de 8 mil tokens).</li>
+        <li><strong>Agrupamento:</strong> UMAP (5 dimensões, similaridade cosseno) → HDBSCAN (tamanho mínimo de cluster 15), via BERTopic.</li>
+        <li><strong>Concentração:</strong> HHI sobre a distribuição de cada tópico entre departamentos (0 = dispersão máxima, 1 = tópico contido em um único departamento).</li>
+        <li><strong>Processamento:</strong> CMCAD/UFBA (NVIDIA A100-SXM4-80GB), 9,4 minutos para o corpus completo.</li>
+      </ul>
+      <p class="muted" style="font-size:.82rem;margin-top:1rem"><strong>Limitações:</strong> os embeddings capturam similaridade semântica de texto, não colaborações efetivas (coautoria, orientação); o parâmetro min_cluster_size influencia a granularidade; 511 CVs (22,5%) ficaram como outliers e 144 docentes do SIRH não têm CV coletado. Resultados agregados por departamento — nenhum dado individual é exibido.</p>
+      <p class="muted" style="font-size:.82rem;margin-top:.75rem">Dados abertos nos termos da Lei nº 12.527/2011 (LAI). Dataset: <a href="data/mapa_tematico.json">mapa_tematico.json</a>.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <h2>Central de Dados</h2>
+        <ul>
+          <li>Equipe de pesquisadores do LABHDUFBA</li>
+          <li>Laboratório de Humanidades Digitais — UFBA</li>
+          <li><a href="https://labhdufba.github.io" rel="noopener">labhdufba.github.io</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>UFBA</h2>
+        <ul>
+          <li><a href="https://www.ufba.br" rel="noopener">Portal UFBA</a></li>
+          <li><a href="https://paineis.ufba.br" rel="noopener">Painéis de Indicadores</a></li>
+          <li><a href="https://transparencia.ufba.br" rel="noopener">Portal da Transparência</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Dados</h2>
+        <ul>
+          <li><a href="https://github.com/LABHDUFBA/data-ufba" rel="noopener">Repositório (GitHub)</a></li>
+          <li>Licença: dados públicos (LAI)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <span>Universidade Federal da Bahia — Av. Paulo VI, nº 3, CEP 40.170-100, Salvador/BA</span>
+      <span>Acessível com <a href="https://vlibras.gov.br" rel="noopener">VLibras</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- VLibras -->
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app.js" type="text/javascript"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<script>
+// Carrega o dataset (JSON externo, não embutido)
+let DS = null;
+async function carregar() {
+  const r = await fetch('../data/mapa_tematico.json');
+  DS = await r.json();
+  renderTudo('todas');
+}
+
+function corCelula(v, vmax) {
+  if (v === 0) return 'background:#fff';
+  const t = Math.sqrt(v / vmax);
+  // escala teal→navy
+  const r1=216,g1=242,b1=241, r2=6,g2=47,b2=87;
+  const r=Math.round(r1+(r2-r1)*t), g=Math.round(g1+(g2-g1)*t), b=Math.round(b1+(b2-b1)*t);
+  return `background:rgb(${r},${g},${b})`;
+}
+
+function renderTudo(filtroUnidade) {
+  // tópicos reais (sem outlier -1) ordenados por tamanho
+  const tops = DS.topicos.filter(t => t.topic !== -1).sort((a,b) => b.n_cvs - a.n_cvs);
+
+  // departamentos que aparecem na matriz
+  const deptSet = new Map();
+  for (const [tid, dept, n] of DS.matriz) deptSet.set(dept, Math.max(deptSet.get(dept)||0, n));
+  let depts = [...deptSet.keys()];
+  // mapa departamento→unidade: usar top_departamento? não temos unidade na matriz.
+  // Filtro por unidade via departamento-sede não é aplicável aqui; unidade = prefixo do dataset de docentes
+  // — mantemos todas as colunas e o filtro filtra LINHAS (tópicos) por rotulo quando aplicável.
+  // Simples: filtro oculta departamentos com 0 CVs nos tópicos visíveis.
+  const vmax = Math.max(...DS.matriz.map(m => m[2]));
+
+  // matriz como mapa
+  const M = new Map();
+  for (const [tid, dept, n] of DS.matriz) M.set(tid + '||' + dept, n);
+
+  // ordenar departamentos por total de CVs (desc)
+  const totals = new Map();
+  for (const d of depts) totals.set(d, tops.reduce((s,t) => s + (M.get(t.topic+'||'+d)||0), 0));
+  depts.sort((a,b) => (totals.get(b)||0) - (totals.get(a)||0));
+  // manter só departamentos com pelo menos 1 CV
+  depts = depts.filter(d => (totals.get(d)||0) > 0);
+
+  const tb = document.getElementById('heatmap');
+  // header
+  const head = document.createElement('thead');
+  const hr = document.createElement('tr');
+  const th0 = document.createElement('th'); th0.textContent = 'Tópico \\ Depto.'; th0.className = 'rt'; hr.appendChild(th0);
+  for (const d of depts) {
+    const th = document.createElement('th');
+    th.textContent = d.replace(/^Depto\. de /, '').replace(/^Coordenação /, 'Coord. ');
+    th.title = d;
+    hr.appendChild(th);
+  }
+  head.appendChild(hr); tb.appendChild(head);
+
+  // linhas
+  const body = document.createElement('tbody');
+  for (const t of tops) {
+    const tr = document.createElement('tr');
+    const td0 = document.createElement('td'); td0.className = 'rot'; td0.textContent = t.rotulo; td0.title = t.rotulo + ' — ' + t.descritores.join(', ');
+    tr.appendChild(td0);
+    for (const d of depts) {
+      const td = document.createElement('td');
+      const v = M.get(t.topic + '||' + d) || 0;
+      if (v > 0) { td.textContent = v; td.style.cssText = corCelula(v, vmax) + ';color:' + (v/vmax > 0.45 ? '#fff' : '#17212a'); }
+      td.title = `${t.rotulo} × ${d}: ${v} CVs`;
+      tr.appendChild(td);
+    }
+    body.appendChild(tr);
+  }
+  tb.appendChild(body);
+
+  // gráfico HHI
+  const cores = t => t.classificacao === 'enclave' ? '#a33' : (t.classificacao === 'interdisciplinar' ? '#008c91' : '#9aa5b0');
+  new Chart(document.getElementById('chartHHI'), {
+    type: 'bar',
+    data: { labels: tops.map(t => t.rotulo), datasets: [{ label: 'HHI', data: tops.map(t => t.hhi), backgroundColor: tops.map(cores) }] },
+    options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => `HHI ${c.raw} — ${tops[c.dataIndex].classificacao}` } } },
+      scales: { x: { beginAtZero: true, max: 1, grid: { color: '#e8ebee' } }, y: { grid: { display: false } } } }
+  });
+
+  // tabela dos 26 tópicos
+  const tbody2 = document.querySelector('#tabTopicos tbody');
+  const CLS = { enclave: ['tag--enclave', 'Enclave'], intermediário: ['tag--mid', 'Intermediário'], interdisciplinar: ['tag--inter', 'Interdisciplinar'] };
+  for (const t of DS.topicos.filter(t => t.topic !== -1).sort((a,b) => b.n_cvs - a.n_cvs)) {
+    const tr = document.createElement('tr');
+    const cls = CLS[t.classificacao];
+    tr.innerHTML = `<td><strong>${t.rotulo}</strong>${t.nota ? `<br><span class="muted" style="font-size:.75rem">${t.nota}</span>` : ''}</td><td class="muted" style="font-size:.78rem">${t.descritores.slice(0,4).join(', ')}</td><td class="num">${t.n_cvs}</td><td class="num">${t.n_departamentos}</td><td class="num">${t.hhi.toFixed(3).replace('.', ',')}</td><td>${t.top_departamento}</td><td><span class="tag ${cls[0]}">${cls[1]}</span></td>`;
+    tbody2.appendChild(tr);
+  }
+}
+carregar();
+</script>
+</body>
+</html>
