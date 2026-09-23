@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#062f57">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Barra oficial gov.br -->
+<script defer src="//barra.brasil.gov.br/barra_2.0.js" type="text/javascript"></script>
+
+<meta name="description" content="Central de Dados da UFBA — ponto único de acesso às iniciativas de dados abertos da Universidade Federal da Bahia: corpo docente, estudantes, pós-graduação, graduação e acervos institucionais.">
+<title>Central de Dados da UFBA</title>
+<style>
+
+:root{--navy-950:#031d35;--navy-900:#062f57;--navy-800:#0b4678;--teal-600:#008c91;--teal-500:#00aeb5;--teal-100:#d8f2f1;--blue-gov:#1351B4;--sand-50:#fbfaf7;--sand-100:#f3f0e9;--white:#fff;--ink:#17212a;--muted:#5b6670;--line:#d9dfe2;--focus:#f0c64a;--font-sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;--font-mono:"IBM Plex Mono",ui-monospace,monospace;--max:1280px;--gutter:clamp(1rem,4vw,3rem)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--sand-50);color:var(--ink);font-family:var(--font-sans);line-height:1.5}
+.container{width:min(var(--max),calc(100% - 2 * var(--gutter)));margin-inline:auto}
+a{color:var(--blue-gov)}
+.skip-link{position:absolute;left:-9999px;background:var(--navy-900);color:#fff;padding:.75rem 1rem;z-index:100}
+.skip-link:focus{left:0}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.eyebrow{margin:0 0 .75rem;color:var(--teal-600);font-family:var(--font-mono);font-size:.75rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase}
+.muted{color:var(--muted)}
+#barra-brasil{filter:grayscale(0)}
+.masthead{position:sticky;top:0;z-index:40;background:var(--navy-900);color:var(--white);border-bottom:1px solid rgba(255,255,255,.16)}
+.masthead__inner{min-height:74px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1.5rem}
+.brand{display:flex;align-items:center;gap:1rem;text-decoration:none;color:var(--white)}
+.brand img{height:44px;width:auto}
+.brand__divider{width:1px;height:34px;background:rgba(255,255,255,.32)}
+.brand__title{font-size:.98rem;font-weight:500;color:var(--white)}
+.brand__title small{display:block;color:rgba(255,255,255,.68);font-size:.72rem;margin-top:.2rem}
+.nav{justify-self:end;display:flex;align-items:stretch;min-height:74px}
+.nav a{display:inline-flex;align-items:center;padding:0 1rem;color:rgba(255,255,255,.82);text-decoration:none;font-size:.88rem;border-bottom:3px solid transparent}
+.nav a:hover,.nav a[aria-current="page"]{color:var(--white);border-color:var(--teal-500)}
+.intro{background:var(--navy-900);color:var(--white);padding:clamp(2.5rem,6vw,4.5rem) 0 clamp(3.5rem,7vw,5rem);overflow:hidden;background-image:linear-gradient(90deg,rgba(0,174,181,.06) 1px,transparent 1px);background-size:10% 100%}
+.intro h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:300;letter-spacing:-.03em;line-height:1.05;margin-bottom:1rem;max-width:850px}
+.intro__lead{max-width:720px;color:rgba(255,255,255,.79);font-size:clamp(1rem,1.3vw,1.15rem);line-height:1.55}
+.intro__lead .eyebrow{color:#85d9da}
+.section{padding:clamp(2.5rem,6vw,4.5rem) 0}
+.section--alt{background:var(--sand-100)}
+.section h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:300;letter-spacing:-.02em}
+footer{background:var(--navy-950);color:rgba(255,255,255,.75);padding:3rem 0 2rem;font-size:.85rem}
+.footer__grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;margin-bottom:2rem}
+footer h2{font-size:.85rem;color:rgba(255,255,255,.7);margin-bottom:.6rem;font-weight:600}
+footer a{color:rgba(255,255,255,.85)}
+footer ul{list-style:none}
+footer li{margin:.3rem 0}
+.footer__bar{border-top:1px solid rgba(255,255,255,.16);padding-top:1.25rem;display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between}
+@media(max-width:768px){.masthead__inner{grid-template-columns:auto 1fr}.nav{grid-column:1/-1;min-height:0;overflow-x:auto}.nav a{padding:.5rem .75rem}}
+
+.hero-cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.hero-cta a{display:inline-flex;align-items:center;gap:.5rem;padding:.7rem 1.4rem;border-radius:8px;font-size:.92rem;font-weight:500;text-decoration:none;transition:background-color .2s,border-color .2s}
+.cta--primary{background:var(--teal-500);color:var(--navy-950)}
+.cta--primary:hover{background:var(--teal-600);color:var(--white)}
+.cta--ghost{border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.9)}
+.cta--ghost:hover{border-color:rgba(255,255,255,.7);color:var(--white)}
+.kpis-strip{display:flex;flex-wrap:wrap;gap:1px;background:var(--line);border-radius:14px;overflow:hidden;margin:-1.75rem auto 0;max-width:var(--max);box-shadow:0 2px 12px rgba(6,47,87,.08);position:relative;z-index:10}
+.kpis-strip .k{flex:1 1 120px;background:var(--white);padding:1.15rem 1rem;text-align:center}
+.kpis-strip .num{font-size:clamp(1.35rem,2.4vw,1.9rem);font-weight:600;color:var(--navy-900)}
+.kpis-strip .lbl{font-size:.76rem;color:var(--muted);margin-top:.15rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,310px),1fr));gap:1.5rem}
+.card{position:relative;display:flex;flex-direction:column;gap:.55rem;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:1.5rem;text-decoration:none;color:var(--ink);box-shadow:0 1px 4px rgba(6,47,87,.05);transition:box-shadow .2s,border-color .2s,transform .2s}
+.card:hover{box-shadow:0 6px 20px rgba(6,47,87,.12);border-color:var(--teal-500);transform:translateY(-2px)}
+.card:focus-visible{transform:translateY(-2px)}
+.card .card__head{display:flex;align-items:center;justify-content:space-between;gap:.75rem}
+.card .tag{font-family:var(--font-mono);font-size:.68rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .6rem;border-radius:999px;white-space:nowrap}
+.tag--on{background:var(--teal-100);color:var(--teal-600)}
+.tag--wip{background:#fdf3d8;color:#8a6d1a}
+.tag--plan{background:#eef1f4;color:var(--muted)}
+.tag--ext{background:#e5ecf7;color:var(--blue-gov)}
+.card .icon{width:34px;height:34px;flex:none;color:var(--teal-600)}
+.card h3{font-size:1.08rem;font-weight:600;line-height:1.3}
+.card p{font-size:.87rem;color:var(--muted);flex:1}
+.card .card__nums{display:flex;flex-wrap:wrap;gap:1.25rem;margin-top:.35rem}
+.card .card__nums strong{display:block;font-size:1.1rem;font-weight:600;color:var(--navy-900)}
+.card .card__nums span{font-size:.72rem;color:var(--muted)}
+.card .go{font-size:.82rem;font-weight:500;color:var(--teal-600)}
+.card--external .go::after{content:" \2197"}
+.updates{display:grid;gap:0;border-left:2px solid var(--line);margin-left:.35rem}
+.update{position:relative;padding:0 0 1.75rem 1.5rem}
+.update::before{content:"";position:absolute;left:-6px;top:.4rem;width:10px;height:10px;border-radius:50%;background:var(--teal-600)}
+.update time{display:block;font-family:var(--font-mono);font-size:.74rem;color:var(--muted);letter-spacing:.04em}
+.update h3{font-size:.98rem;font-weight:600;margin:.2rem 0 .25rem}
+.update p{font-size:.87rem;color:var(--muted);max-width:70ch}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1.5rem;margin-top:2rem}
+.feature{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:1.4rem}
+.feature .icon{width:30px;height:30px;color:var(--teal-600);margin-bottom:.75rem}
+.feature h3{font-size:.98rem;font-weight:600;margin-bottom:.35rem}
+.feature p{font-size:.87rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+<div id="barra-brasil"></div>
+
+<header class="masthead">
+  <div class="container masthead__inner">
+    <a class="brand" href="index.html">
+      <img src="assets/ufba-branco.png" alt="Universidade Federal da Bahia">
+      <span class="brand__divider"></span>
+      <span class="brand__title">Central de Dados<small>data.ufba.br — Universidade Federal da Bahia</small></span>
+    </a>
+    <nav class="nav" aria-label="Seções">
+      <a href="#iniciativas">Iniciativas</a>
+      <a href="#atualizacoes">Atualizações</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="container">
+    <p class="eyebrow">Dados abertos · Transparência · Lei nº 12.527/2011</p>
+    <h1>Central de Dados da UFBA</h1>
+    <p class="intro__lead">A Central de Dados reúne, em um único ponto de acesso, as iniciativas de dados abertos da Universidade Federal da Bahia. Cada iniciativa apresenta fontes, períodos, métodos e limitações de forma explícita, garantindo transparência e reprodutibilidade da informação pública universitária.</p>
+    <div class="hero-cta">
+      <a class="cta--primary" href="#iniciativas">Explorar iniciativas</a>
+      <a class="cta--ghost" href="#sobre">Sobre a Central</a>
+    </div>
+  </div>
+</section>
+
+<div class="kpis-strip" role="list" aria-label="Indicadores gerais da Universidade">
+  <div class="k" role="listitem"><div class="num">2.650</div><div class="lbl">Docentes</div></div>
+  <div class="k" role="listitem"><div class="num">34</div><div class="lbl">Unidades acadêmicas</div></div>
+  <div class="k" role="listitem"><div class="num">89.7%</div><div class="lbl">Docentes doutores</div></div>
+  <div class="k" role="listitem"><div class="num">63.103</div><div class="lbl">Artigos catalogados</div></div>
+  <div class="k" role="listitem"><div class="num">7.123</div><div class="lbl">Boletins PRODEP</div></div>
+</div>
+
+<main id="conteudo">
+
+<section id="iniciativas" class="section">
+  <div class="container">
+    <p class="eyebrow">Explore por tema</p>
+    <h2 style="margin-bottom:.5rem">Iniciativas de dados</h2>
+    <p class="muted" style="margin-bottom:2rem;max-width:62ch">Cada iniciativa possui dados, fontes e metodologia próprios, documentados de forma independente.</p>
+
+    <div class="cards">
+
+      <a class="card" href="docentes/">
+        <span class="tag tag--on">Disponível</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <h3>Caracterização do Corpo Docente</h3>
+        <p>Perfil funcional e acadêmico do corpo docente — titulação, regime de trabalho e ingresso (SIRH) — e produção bibliográfica consolidada dos currículos Lattes, agregada por unidade acadêmica.</p>
+        <div class="card__nums">
+          <div><strong>2.650</strong><span>docentes</span></div>
+          <div><strong>34</strong><span>unidades</span></div>
+          <div><strong>63.103</strong><span>artigos</span></div>
+        </div>
+        <span class="go">Abrir painel</span>
+      </a>
+
+      <a class="card" href="#iniciativas">
+        <span class="tag tag--wip">Em preparação</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        <h3>Boletins de Pessoal PRODEP</h3>
+        <p>Acervo histórico dos Boletins de Pessoal da Pró-Reitoria de Desenvolvimento de Pessoal, com ocorrências classificadas por tema e registro completo de proveniência.</p>
+        <div class="card__nums">
+          <div><strong>7.123</strong><span>boletins preservados</span></div>
+          <div><strong>1990–hoje</strong><span>período coberto</span></div>
+        </div>
+        <span class="go">Em preparação</span>
+      </a>
+
+      <a class="card" href="#iniciativas">
+        <span class="tag tag--plan">Planejado</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        <h3>Dados Estudantis</h3>
+        <p>Caracterização do corpo discente: ingresso, permanência, conclusão e equidade, a partir dos censos da educação superior e de dados institucionais.</p>
+        <div class="card__nums">
+          <div><strong>INEP</strong><span>fonte prevista</span></div>
+        </div>
+        <span class="go">Planejado</span>
+      </a>
+
+      <a class="card" href="#iniciativas">
+        <span class="tag tag--plan">Planejado</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        <h3>Pós-Graduação</h3>
+        <p>Programas de pós-graduação stricto sensu: grande área, conceitos de avaliação e corpo discente e docente, conforme dados CAPES.</p>
+        <div class="card__nums">
+          <div><strong>77</strong><span>programas</span></div>
+          <div><strong>CAPES</strong><span>fonte prevista</span></div>
+        </div>
+        <span class="go">Planejado</span>
+      </a>
+
+      <a class="card" href="#iniciativas">
+        <span class="tag tag--plan">Planejado</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
+        <h3>Graduação</h3>
+        <p>Série histórica da graduação presencial: vagas, ingressantes, matrículas e concluintes, conforme o Censo da Educação Superior do INEP.</p>
+        <div class="card__nums">
+          <div><strong>2014–2021</strong><span>série prevista</span></div>
+        </div>
+        <span class="go">Planejado</span>
+      </a>
+
+      <a class="card card--external" href="https://paineis.ufba.br/" rel="noopener">
+        <span class="tag tag--ext">UFBA</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 3v18h18"/><rect x="5" y="12" width="3" height="6"/><rect x="10" y="8" width="3" height="10"/><rect x="15" y="5" width="3" height="13"/></svg>
+        <h3>Painéis de Indicadores</h3>
+        <p>Painéis oficiais de indicadores institucionais da UFBA: gestão, orçamento, ensino, pesquisa e extensão.</p>
+        <span class="go">Acessar</span>
+      </a>
+
+      <a class="card card--external" href="https://transparencia.ufba.br/" rel="noopener">
+        <span class="tag tag--ext">UFBA</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <h3>Portal da Transparência</h3>
+        <p>Transparência pública da UFBA: despesas, contratos, licitações e quadro de pessoal, conforme a LAI.</p>
+        <span class="go">Acessar</span>
+      </a>
+
+      <a class="card card--external" href="https://github.com/LABHDUFBA/data-ufba" rel="noopener">
+        <span class="tag tag--ext">Repositório</span>
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        <h3>Dados abertos (GitHub)</h3>
+        <p>Conjuntos de dados, scripts de coleta e documentação metodológica, versionados e reprodutíveis.</p>
+        <span class="go">Acessar</span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="atualizacoes" class="section section--alt">
+  <div class="container">
+    <p class="eyebrow">Acompanhe</p>
+    <h2 style="margin-bottom:2rem">Atualizações</h2>
+    <div class="updates">
+      <article class="update">
+        <time datetime="2026-09">Setembro de 2026</time>
+        <h3>Painel de Caracterização do Corpo Docente</h3>
+        <p>Primeira iniciativa publicada: perfil funcional e acadêmico dos 2.650 docentes da Universidade, com produção bibliográfica Lattes consolidada e agregada por unidade acadêmica.</p>
+      </article>
+      <article class="update">
+        <time datetime="2026-09">Setembro de 2026</time>
+        <h3>Acervo PRODEP preservado</h3>
+        <p>7.123 Boletins de Pessoal (1990–hoje) coletados, verificados e documentados com registro de proveniência. A camada analítica está em preparação.</p>
+      </article>
+      <article class="update">
+        <time datetime="2026-08">Agosto de 2026</time>
+        <h3>Consolidação da base de docentes</h3>
+        <p>Integração SIRH + Lattes com auditoria de qualidade: 2.429 currículos verificados, duplicidades de identificador zeradas e associações revisadas.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="sobre" class="section">
+  <div class="container">
+    <p class="eyebrow">Sobre a Central</p>
+    <h2 style="margin-bottom:.75rem">Uma central, várias iniciativas</h2>
+    <p class="muted" style="max-width:74ch">A Central de Dados da UFBA é mantida por uma equipe de pesquisadores do LABHDUFBA — Laboratório de Humanidades Digitais da Universidade Federal da Bahia — e organiza a produção e a publicação de dados abertos da Universidade. As iniciativas seguem três princípios: transparência ativa, conforme a Lei nº 12.527/2011 (LAI); reprodutibilidade, com coleta, código e documentação versionados; e responsabilidade no tratamento de dados individuais, priorizando agregações e registrando fontes, períodos, métodos e limitações de cada conjunto.</p>
+    <div class="features">
+      <div class="feature">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <h3>Dados abertos</h3>
+        <p>Publicação ativa nos termos da LAI, com acesso livre e gratuito à informação pública universitária.</p>
+      </div>
+      <div class="feature">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <h3>Reprodutibilidade</h3>
+        <p>Coleta, tratamento e análise documentados e versionados em repositório público.</p>
+      </div>
+      <div class="feature">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+        <h3>Privacidade por padrão</h3>
+        <p>Dados individuais são tratados como sensíveis: as visualizações priorizam agregações.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <h2>Central de Dados</h2>
+        <ul>
+          <li>Equipe de pesquisadores do LABHDUFBA</li>
+          <li>Laboratório de Humanidades Digitais — UFBA</li>
+          <li><a href="https://labhdufba.github.io" rel="noopener">labhdufba.github.io</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>UFBA</h2>
+        <ul>
+          <li><a href="https://www.ufba.br" rel="noopener">Portal UFBA</a></li>
+          <li><a href="https://paineis.ufba.br" rel="noopener">Painéis de Indicadores</a></li>
+          <li><a href="https://transparencia.ufba.br" rel="noopener">Portal da Transparência</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Dados</h2>
+        <ul>
+          <li><a href="https://github.com/LABHDUFBA/data-ufba" rel="noopener">Repositório (GitHub)</a></li>
+          <li>Licença: dados públicos (LAI)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bar">
+      <span>Universidade Federal da Bahia — Av. Paulo VI, nº 3, CEP 40.170-100, Salvador/BA</span>
+      <span>Acessível com <a href="https://vlibras.gov.br" rel="noopener">VLibras</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- VLibras -->
+<div vw class="enabled">
+  <div vw-access-button class="active"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+<script src="https://vlibras.gov.br/app.js" type="text/javascript"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+</body>
+</html>
