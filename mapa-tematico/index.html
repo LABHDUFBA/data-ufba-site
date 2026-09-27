@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#062f57">
-<meta name="description" content="Mapa temático da pesquisa na UFBA — 26 tópicos identificados por aprendizado de máquina (BGE-M3 + BERTopic) sobre 2.272 currículos Lattes, com enclaves disciplinares e áreas interdisciplinares.">
-<title>Mapa Temático — Central de Dados da UFBA</title>
+<meta name="description" content="O DataUFBA, Observatório de Dados da UFBA: mapa temático da pesquisa na UFBA com 26 tópicos de 2.272 currículos Lattes, entre enclaves e interdisciplinares.">>
+<title>Mapa Temático · DataUFBA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -89,10 +89,10 @@ footer li{margin:.3rem 0}
     <a class="brand" href="index.html">
       <img src="assets/ufba-branco.png" alt="Universidade Federal da Bahia">
       <span class="brand__divider"></span>
-      <span class="brand__title">Central de Dados<small>data.ufba.br — Universidade Federal da Bahia</small></span>
+      <span class="brand__title">DataUFBA<small>Observatório de Dados da UFBA · data.ufba.br</small></span>
     </a>
     <nav class="nav" aria-label="Seções">
-      <a href="index.html">Iniciativas</a>
+      <a href="index.html">Painéis</a>
       <a href="#mapa" aria-current="page">Mapa temático</a>
       <a href="#enclaves">Enclaves × interdisciplinares</a>
       <a href="#metodologia">Metodologia</a>
@@ -104,7 +104,7 @@ footer li{margin:.3rem 0}
   <div class="container">
     <p class="eyebrow">Aprendizado de máquina sobre currículos Lattes</p>
     <h1>Mapa Temático da Pesquisa</h1>
-    <p class="intro__lead">Classificação não-supervisionada de 2.272 currículos Lattes de docentes da UFBA em 26 comunidades temáticas — identificando enclaves disciplinares, de fronteiras rígidas, e áreas interdisciplinares, que atravessam a estrutura da universidade.</p>
+    <p class="intro__lead">Classificação não-supervisionada de 2.272 currículos Lattes de docentes da UFBA em 26 comunidades temáticas, identificando enclaves disciplinares, de fronteiras rígidas e áreas interdisciplinares, que atravessam a estrutura da universidade.</p>
   </div>
 </section>
 
@@ -148,7 +148,7 @@ footer li{margin:.3rem 0}
     <p class="muted" style="margin-bottom:1.5rem;max-width:62ch">O índice Herfindahl-Hirschman mede a concentração de cada tópico entre departamentos: acima de 0,4, enclave disciplinar; abaixo de 0,15, área distribuída ou interdisciplinar.</p>
     <div class="chart-card" style="margin-bottom:2rem">
       <h3>Concentração por tópico</h3>
-      <p class="sub">HHI por tópico — vermelho: enclave; verde: interdisciplinar</p>
+      <p class="sub">HHI por tópico: vermelho indica enclave; verde, interdisciplinar</p>
       <canvas id="chartHHI" role="img" aria-label="Gráfico de concentração HHI por tópico" style="max-height:560px"></canvas>
     </div>
     <div class="chart-card">
@@ -177,7 +177,7 @@ footer li{margin:.3rem 0}
         <li><strong>Concentração:</strong> HHI sobre a distribuição de cada tópico entre departamentos (0 = dispersão máxima, 1 = tópico contido em um único departamento).</li>
         <li><strong>Processamento:</strong> CMCAD/UFBA (NVIDIA A100-SXM4-80GB), 9,4 minutos para o corpus completo.</li>
       </ul>
-      <p class="muted" style="font-size:.82rem;margin-top:1rem"><strong>Limitações:</strong> os embeddings capturam similaridade semântica de texto, não colaborações efetivas (coautoria, orientação); o parâmetro min_cluster_size influencia a granularidade; 511 CVs (22,5%) ficaram como outliers e 144 docentes do SIRH não têm CV coletado. Resultados agregados por departamento — nenhum dado individual é exibido.</p>
+      <p class="muted" style="font-size:.82rem;margin-top:1rem"><strong>Limitações:</strong> os embeddings capturam similaridade semântica de texto, não colaborações efetivas (coautoria, orientação); o parâmetro min_cluster_size influencia a granularidade; 511 CVs (22,5%) ficaram como outliers e 144 docentes do SIRH não têm CV coletado. Resultados agregados por departamento; nenhum dado individual é exibido.</p>
       <p class="muted" style="font-size:.82rem;margin-top:.75rem">Dados abertos nos termos da Lei nº 12.527/2011 (LAI). Dataset: <a href="data/mapa_tematico.json">mapa_tematico.json</a>.</p>
     </div>
   </div>
@@ -189,10 +189,10 @@ footer li{margin:.3rem 0}
   <div class="container">
     <div class="footer__grid">
       <div>
-        <h2>Central de Dados</h2>
+        <h2>DataUFBA</h2>
         <ul>
           <li>Equipe de pesquisadores do LABHDUFBA</li>
-          <li>Laboratório de Humanidades Digitais — UFBA</li>
+          <li>Laboratório de Humanidades Digitais, UFBA</li>
           <li><a href="https://labhdufba.github.io" rel="noopener">labhdufba.github.io</a></li>
         </ul>
       </div>
@@ -213,7 +213,7 @@ footer li{margin:.3rem 0}
       </div>
     </div>
     <div class="footer__bar">
-      <span>Universidade Federal da Bahia — Av. Paulo VI, nº 3, CEP 40.170-100, Salvador/BA</span>
+      <span>Universidade Federal da Bahia · Av. Paulo VI, nº 3, CEP 40.170-100, Salvador/BA</span>
       <span>Acessível com <a href="https://vlibras.gov.br" rel="noopener">VLibras</a></span>
     </div>
   </div>
@@ -259,7 +259,7 @@ function renderTudo(filtroUnidade) {
   let depts = [...deptSet.keys()];
   // mapa departamento→unidade: usar top_departamento? não temos unidade na matriz.
   // Filtro por unidade via departamento-sede não é aplicável aqui; unidade = prefixo do dataset de docentes
-  // — mantemos todas as colunas e o filtro filtra LINHAS (tópicos) por rotulo quando aplicável.
+  // mantemos todas as colunas e o filtro filtra LINHAS (tópicos) por rotulo quando aplicável.
   // Simples: filtro oculta departamentos com 0 CVs nos tópicos visíveis.
   const vmax = Math.max(...DS.matriz.map(m => m[2]));
 
@@ -291,7 +291,7 @@ function renderTudo(filtroUnidade) {
   const body = document.createElement('tbody');
   for (const t of tops) {
     const tr = document.createElement('tr');
-    const td0 = document.createElement('td'); td0.className = 'rot'; td0.textContent = t.rotulo; td0.title = t.rotulo + ' — ' + t.descritores.join(', ');
+    const td0 = document.createElement('td'); td0.className = 'rot'; td0.textContent = t.rotulo; td0.title = t.rotulo + ': ' + t.descritores.join(', ');
     tr.appendChild(td0);
     for (const d of depts) {
       const td = document.createElement('td');
@@ -310,7 +310,7 @@ function renderTudo(filtroUnidade) {
     type: 'bar',
     data: { labels: tops.map(t => t.rotulo), datasets: [{ label: 'HHI', data: tops.map(t => t.hhi), backgroundColor: tops.map(cores) }] },
     options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
-      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => `HHI ${c.raw} — ${tops[c.dataIndex].classificacao}` } } },
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: c => `HHI ${c.raw}: ${tops[c.dataIndex].classificacao}` } } },
       scales: { x: { beginAtZero: true, max: 1, grid: { color: '#e8ebee' } }, y: { grid: { display: false } } } }
   });
 
