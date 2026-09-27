@@ -14,7 +14,7 @@ corresponde ao nome.
 
 | Camada | Responsabilidade | Onde vive |
 |---|---|---|
-| **Repositório** | Custódia, proveniência, checksums, reprodutibilidade | Repos de dados do LABHD (ex.: `LABHDUFBA/data-ufba`) |
+| **Repositório** | Custódia, proveniência, checksums, reprodutibilidade | Onde a fonte disponibiliza o dado, mais os repos de coleta do LABHD |
 | **Catálogo** | Metadado, descoberta e monitoramento de conjuntos | Pode ser parte deste site |
 | **Vitrine** | Leitura pública: agregar, traduzir, contextualizar | **É este site** |
 
@@ -25,7 +25,7 @@ com dado preservado e documentado e (b) um registro de catálogo que diga o que 
 ## Regras de escopo
 
 1. **Não hospedar acervo bruto neste repositório.** HTMLs originais, PDFs e artefatos
-   preservados ficam no repositório de dados. Aqui entram apenas páginas, assets de
+   permanecem onde a fonte os disponibiliza. Aqui entram apenas páginas, assets de
    interface e datasets **agregados** derivados.
 2. **Nunca publicar dado nominal**, em nenhuma camada, ainda que a fonte seja pública.
    Só agregações.
@@ -34,7 +34,7 @@ com dado preservado e documentado e (b) um registro de catálogo que diga o que 
 4. **Não promover uma "iniciativa planejada" a painel** sem antes definir qual
    repositório de origem será catalogado.
 5. **Catalogar repositórios de terceiros** (CAPES, INEP, Portal da Transparência,
-   `paineis.ufba.br`) é permitido e desejado: a Central assume a curadoria do
+   `paineis.ufba.br`) é permitido e desejado: o DataUFBA assume a curadoria do
    metadado, não a custódia do dado alheio.
 
 ## Estrutura
@@ -49,8 +49,10 @@ assets/                 # logos e imagens de interface
 docs/diretrizes.md      # definição do projeto (normativa)
 ```
 
-Os dois repositórios têm papéis distintos: o site é este repo; o acervo e a coleta
-vivem em `LABHDUFBA/data-ufba`. O protótipo antigo em `data-ufba/site/` está
+Os dois repositórios têm papéis distintos: o site é este repo; a coleta e o manifesto
+de proveniência vivem em `LABHDUFBA/data-ufba`. **O dado em si não é hospedado por
+nenhum dos dois**: ele permanece no site da fonte que o disponibiliza, e o catálogo
+apenas indica onde encontrá-lo. O protótipo antigo em `data-ufba/site/` está
 congelado e **não** é este site.
 
 ## Convenções das vitrines
@@ -66,7 +68,7 @@ congelado e **não** é este site.
   404 por caminho errado.
 - **Toda vitrine declara fonte, período, método e limitação na própria página.**
 - Painel novo = nova pasta + card no hub + entrada em **Atualizações**.
-- Números do hub devem ser consistentes com os datasets e com o repositório de dados.
+- Números do hub devem ser consistentes com os datasets publicados e com a fonte primária.
   Se a fonte canônica não estiver definida, registre a divergência; não invente
   conciliação.
 - **Não usar travessão em texto de interface.** Prefira reescrever a frase ou usar

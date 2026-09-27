@@ -171,14 +171,14 @@ footer li{margin:.3rem 0}
     <div class="chart-card" style="max-width:860px">
       <h3>Como este mapa foi produzido</h3>
       <ul class="muted" style="margin:.75rem 0 0 1.2rem;font-size:.9rem;line-height:1.7">
-        <li><strong>Corpus:</strong> 2.272 currículos Lattes de docentes UFBA (coleta LABHDUFBA, ago/2026), de 85 departamentos. Para cada CV, concatenaram-se resumo, áreas de atuação, linhas, projetos, formação e produções (~12 mil caracteres).</li>
+        <li><strong>Corpus:</strong> 2.272 currículos Lattes de docentes da UFBA, disponibilizados pela Plataforma Lattes do CNPq (coleta LABHDUFBA, ago/2026), de 85 departamentos. Para cada CV, concatenaram-se resumo, áreas de atuação, linhas, projetos, formação e produções (~12 mil caracteres).</li>
         <li><strong>Vetorização:</strong> BAAI/bge-m3 (multilingue, 1024 dimensões, contexto de 8 mil tokens).</li>
         <li><strong>Agrupamento:</strong> UMAP (5 dimensões, similaridade cosseno) → HDBSCAN (tamanho mínimo de cluster 15), via BERTopic.</li>
         <li><strong>Concentração:</strong> HHI sobre a distribuição de cada tópico entre departamentos (0 = dispersão máxima, 1 = tópico contido em um único departamento).</li>
         <li><strong>Processamento:</strong> CMCAD/UFBA (NVIDIA A100-SXM4-80GB), 9,4 minutos para o corpus completo.</li>
       </ul>
       <p class="muted" style="font-size:.82rem;margin-top:1rem"><strong>Limitações:</strong> os embeddings capturam similaridade semântica de texto, não colaborações efetivas (coautoria, orientação); o parâmetro min_cluster_size influencia a granularidade; 511 CVs (22,5%) ficaram como outliers e 144 docentes do SIRH não têm CV coletado. Resultados agregados por departamento; nenhum dado individual é exibido.</p>
-      <p class="muted" style="font-size:.82rem;margin-top:.75rem">Dados abertos nos termos da Lei nº 12.527/2011 (LAI). Dataset: <a href="data/mapa_tematico.json">mapa_tematico.json</a>.</p>
+      <p class="muted" style="font-size:.82rem;margin-top:.75rem">Dados abertos nos termos da Lei nº 12.527/2011 (LAI). Dataset: <a href="data/mapa_tematico.json">mapa_tematico.json</a>. O corpus de currículos não é redistribuído por este site; ele permanece disponível na Plataforma Lattes.</p>
     </div>
   </div>
 </section>
@@ -207,7 +207,6 @@ footer li{margin:.3rem 0}
       <div>
         <h2>Dados</h2>
         <ul>
-          <li><a href="https://github.com/LABHDUFBA/data-ufba" rel="noopener">Repositório (GitHub)</a></li>
           <li>Licença: dados públicos (LAI)</li>
         </ul>
       </div>

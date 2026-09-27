@@ -28,7 +28,7 @@ dados". Consequências observadas:
   apresentado lado a lado com painéis analíticos, como se fossem o mesmo tipo de
   produto.
 - O card "Dados abertos (GitHub)" aponta para o repositório `data-ufba` como se fosse
-  uma iniciativa da Central, misturando custódia com publicação.
+  uma iniciativa do DataUFBA, misturando custódia com publicação.
 - Iniciativas marcadas como "Planejado" (Dados Estudantis, Pós-Graduação, Graduação)
   não têm definido *o que* catalogariam nem *de quem* é o repositório de origem.
 
@@ -45,7 +45,7 @@ manifesto, os checksums e os testes de reprodutibilidade.
 - **Pergunta que responde:** *de onde veio, quando, por qual método, com qual
   limitação, e como reexecutar?*
 - **Onde isso vive:** repositórios de dados do LABHD (ex.: `LABHDUFBA/data-ufba`).
-- **Não é a cara pública do DataUFBA.** A Central pode e deve referenciar
+- **Não é a cara pública do DataUFBA.** O DataUFBA pode e deve referenciar
   repositórios, sem hospedar acervo bruto, sem versionar dado nominal, sem virar
   espelho de acervo.
 
@@ -80,7 +80,7 @@ Repositório (custódia)  →  Catálogo (metadado + monitoramento)  →  Vitrin
         fora do site              pode ser parte do site              é o site
 ```
 
-Uma **iniciativa** da Central é uma vitrine, e ela existe quando há: (a) um
+Uma **iniciativa** do DataUFBA é uma vitrine, e ela existe quando há: (a) um
 repositório com dado preservado e documentado, e (b) um registro de catálogo que diz
 o que aquilo é. Sem as duas, não é iniciativa, e sim trabalho em andamento.
 
@@ -91,14 +91,14 @@ o que aquilo é. Sem as duas, não é iniciativa, e sim trabalho em andamento.
 O que isso implica na prática:
 
 - Não hospedar acervo bruto no site (os HTMLs originais dos Boletins PRODEP
-  permanecem no repositório de dados, nunca no repo do site).
+  permanecem no portal da PRODEP, que é quem os disponibiliza, nunca no repo do site).
 - Não publicar dado nominal em nenhuma camada.
 - Não duplicar dado: a vitrine consome datasets agregados derivados do repositório,
   não mantém cópia própria da fonte.
 - O catálogo aponta para repositórios, inclusive de terceiros (CAPES, INEP,
   Portal da Transparência, paineis.ufba.br), e assume a curadoria do metadado, não a
   custódia do dado alheio.
-- Quando a Central precisar preservar algo (ex.: um recorte que a fonte retirou do
+- Quando o DataUFBA precisar preservar algo (ex.: um recorte que a fonte retirou do
   ar), isso é uma decisão explícita, registrada, e o artefato vai para um repositório,
   não para o site.
 
@@ -106,11 +106,11 @@ O que isso implica na prática:
 
 | Termo | Uso no projeto |
 |---|---|
-| **Repositório** | Onde o dado e o código são preservados. |
+| **Repositório** | Onde o dado é disponibilizado pela fonte e onde o código de coleta é versionado. |
 | **Catálogo** | Registro de metadados sobre repositórios e conjuntos; camada de descoberta e monitoramento. |
 | **Vitrine** | Página ou painel de leitura pública de um conjunto catalogado. |
 | **Iniciativa** | Uma vitrine publicada, com repositório e registro de catálogo correspondentes. |
-| **Acervo** | Conjunto preservado em um repositório (ex.: Boletins de Pessoal PRODEP). Não confundir com iniciativa. |
+| **Acervo** | Conjunto mantido e disponibilizado por uma fonte (ex.: Boletins de Pessoal PRODEP, no portal da PRODEP). Não confundir com iniciativa nem com o que o DataUFBA hospeda. |
 
 *Sobre o termo "vitrine": serve bem ao discurso interno e à definição de escopo, e é
 o que distingue este projeto de um repositório. Na interface pública, o par adotado é
@@ -139,12 +139,12 @@ por este documento**:
 
 ## 6. Direção de longo prazo
 
-Duas frentes que a distinção acima abre e que são características do que a Central
+Duas frentes que a distinção acima abre e que são características do que o DataUFBA
 pode fazer e um repositório institucional não faz:
 
 - **Curadoria comunitária (metadado social).** Acrescentar camadas de contribuição
   pública sobre acervos existentes, como transcrição, indexação e anotação. Não exige
-  infraestrutura nova: exige camada de curadoria sobre dado que já está preservado.
+  infraestrutura nova: exige camada de curadoria sobre dado que já é disponibilizado por alguém.
 - **Busca multimodal entre acervos.** Cruzar tipo de dado (visual, temporal,
   geoespacial, textual) e instituição, para revelar conexões que uma leitura por
   acervo isolado não mostra.
