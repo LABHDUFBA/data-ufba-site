@@ -1,15 +1,16 @@
-# AGENTS.md — data-ufba-site
+# AGENTS.md: DataUFBA (repositório data-ufba-site)
 
 Regras deste repositório. Leia antes de alterar qualquer arquivo.
 
-A definição completa do projeto — as três camadas, o vocabulário e o registro da
-decisão — está em [`docs/diretrizes.md`](docs/diretrizes.md). Este arquivo é a versão
+A definição completa do projeto (as três camadas, o vocabulário e o registro da
+decisão) está em [`docs/diretrizes.md`](docs/diretrizes.md). Este arquivo é a versão
 operacional: o que fazer e o que não fazer.
 
 ## O que é este repositório
 
-O `data.ufba.br` é **catálogo de repositórios e vitrine**. **Não é repositório de
-dados.**
+O **DataUFBA** (subtítulo: **Observatório de Dados da UFBA**) é **catálogo de
+repositórios e vitrine**. **Não é repositório de dados.** A URL `data.ufba.br`
+corresponde ao nome.
 
 | Camada | Responsabilidade | Onde vive |
 |---|---|---|
@@ -17,7 +18,7 @@ dados.**
 | **Catálogo** | Metadado, descoberta e monitoramento de conjuntos | Pode ser parte deste site |
 | **Vitrine** | Leitura pública: agregar, traduzir, contextualizar | **É este site** |
 
-Uma **iniciativa** da Central é uma vitrine, e só existe quando há (a) um repositório
+Uma **iniciativa** do DataUFBA é uma vitrine, e só existe quando há (a) um repositório
 com dado preservado e documentado e (b) um registro de catálogo que diga o que aquilo
 é.
 
@@ -33,13 +34,13 @@ com dado preservado e documentado e (b) um registro de catálogo que diga o que 
 4. **Não promover uma "iniciativa planejada" a painel** sem antes definir qual
    repositório de origem será catalogado.
 5. **Catalogar repositórios de terceiros** (CAPES, INEP, Portal da Transparência,
-   `paineis.ufba.br`) é permitido e desejado — a Central assume a curadoria do
+   `paineis.ufba.br`) é permitido e desejado: a Central assume a curadoria do
    metadado, não a custódia do dado alheio.
 
 ## Estrutura
 
 ```
-index.html              # hub — catálogo de iniciativas
+index.html              # hub: catálogo de iniciativas
 docentes/               # vitrine: caracterização do corpo docente
 mapa-tematico/          # vitrine: mapa temático da pesquisa
 boletins-prodep/        # vitrine: agregações dos Boletins de Pessoal
@@ -61,13 +62,15 @@ congelado e **não** é este site.
 - **Dataset via JSON externo** em `data/`, carregado por `fetch` (padrão do
   `mapa-tematico`). Não embutir dados no HTML.
 - **Caminhos relativos**: páginas em subpasta usam `../assets/...` e `../index.html`.
-  Conferir com `curl -o /dev/null -w '%{http_code}'` na URL publicada — há histórico de
+  Conferir com `curl -o /dev/null -w '%{http_code}'` na URL publicada. Há histórico de
   404 por caminho errado.
 - **Toda vitrine declara fonte, período, método e limitação na própria página.**
 - Painel novo = nova pasta + card no hub + entrada em **Atualizações**.
 - Números do hub devem ser consistentes com os datasets e com o repositório de dados.
-  Se a fonte canônica não estiver definida, registre a divergência — não invente
+  Se a fonte canônica não estiver definida, registre a divergência; não invente
   conciliação.
+- **Não usar travessão em texto de interface.** Prefira reescrever a frase ou usar
+  vírgula; para separar rótulos, use o ponto médio (·), já adotado nas páginas.
 
 ## Validação obrigatória antes de commit
 
@@ -87,8 +90,8 @@ motivo.
 - Commits com a identidade já configurada no repositório.
 - Depois do merge, remover a branch remota e a cópia local quando não houver mais
   trabalho exclusivo.
-- Pages publica da `main` na raiz; o build leva ~20–40s.
-- **`data.ufba.br` ainda não está publicado** — a URL oficial responde 503 na origem
+- Pages publica da `main` na raiz; o build leva cerca de 20 a 40 segundos.
+- **`data.ufba.br` ainda não está publicado**: a URL oficial responde 503 na origem
   institucional (infra da UFBA), o que é esperado enquanto o site está em construção.
   A cópia viva é `https://labhdufba.github.io/data-ufba-site/`. Publicação oficial é
   decisão da UFBA, não deste repositório.
