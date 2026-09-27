@@ -10,8 +10,8 @@
 <!-- Barra oficial gov.br -->
 <script defer src="//barra.brasil.gov.br/barra_2.0.js" type="text/javascript"></script>
 
-<meta name="description" content="Acervo histórico dos Boletins de Pessoal da PRODEP/UFBA — 7.123 boletins (1990–2026) preservados e 196.465 ocorrências administrativas agregadas, sem exibição de dados nominais.">
-<title>Boletins de Pessoal PRODEP — Central de Dados da UFBA</title>
+<meta name="description" content="Boletins de Pessoal da PRODEP/UFBA — 196.465 ocorrências administrativas extraídas de 7.123 edições (1990–2026), apresentadas em agregações anuais, sem exibição de dados nominais. O acervo original é mantido pela Universidade.">
+<title>Boletins de Pessoal PRODEP — Observatório de Dados da UFBA</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 :root{--navy-950:#031d35;--navy-900:#062f57;--navy-800:#0b4678;--teal-600:#008c91;--teal-500:#00aeb5;--teal-100:#d8f2f1;--blue-gov:#1351B4;--sand-50:#fbfaf7;--sand-100:#f3f0e9;--white:#fff;--ink:#17212a;--muted:#5b6670;--line:#d9dfe2;--focus:#f0c64a;--font-sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;--font-mono:"IBM Plex Mono",ui-monospace,monospace;--max:1280px;--gutter:clamp(1rem,4vw,3rem)}
@@ -79,11 +79,11 @@ footer li{margin:.3rem 0}
     <a class="brand" href="../index.html">
       <img src="../assets/ufba-branco.png" alt="Universidade Federal da Bahia">
       <span class="brand__divider"></span>
-      <span class="brand__title">Central de Dados<small>data.ufba.br — Universidade Federal da Bahia</small></span>
+      <span class="brand__title">Observatório de Dados<small>data.ufba.br — Universidade Federal da Bahia</small></span>
     </a>
     <nav class="nav" aria-label="Seções">
-      <a href="../index.html">Iniciativas</a>
-      <a href="#acervo" aria-current="page">Acervo</a>
+      <a href="../index.html">Painéis</a>
+      <a href="#acervo" aria-current="page">Edições</a>
       <a href="#ocorrencias">Ocorrências</a>
       <a href="#metodologia">Metodologia</a>
     </nav>
@@ -94,12 +94,12 @@ footer li{margin:.3rem 0}
   <div class="container">
     <p class="eyebrow">PRODEP · Pró-Reitoria de Desenvolvimento de Pessoal</p>
     <h1>Boletins de Pessoal</h1>
-    <p class="intro__lead">Leitura histórica dos atos administrativos de pessoal publicados nos Boletins de Pessoal da UFBA: 7.123 edições preservadas (1990–2026) e 196.465 ocorrências extraídas — apresentadas exclusivamente em agregações, sem exibição de registros nominais.</p>
+    <p class="intro__lead">Leitura histórica dos atos administrativos de pessoal publicados nos Boletins de Pessoal da UFBA: 196.465 ocorrências extraídas de 7.123 edições (1990–2026), apresentadas exclusivamente em agregações, sem exibição de registros nominais. O acervo original é mantido pela Universidade, no portal da PRODEP, e não é hospedado neste site.</p>
   </div>
 </section>
 
 <div class="stats container" role="list" aria-label="Indicadores dos Boletins de Pessoal">
-  <div class="stat" role="listitem"><div class="num" id="k-boletins"></div><div class="label">Boletins preservados</div></div>
+  <div class="stat" role="listitem"><div class="num" id="k-boletins"></div><div class="label">Edições analisadas</div></div>
   <div class="stat" role="listitem"><div class="num" id="k-occ"></div><div class="label">Ocorrências</div></div>
   <div class="stat" role="listitem"><div class="num" id="k-people"></div><div class="label">Pessoas por ano</div></div>
   <div class="stat" role="listitem"><div class="num" id="k-labels"></div><div class="label">Rótulos distintos</div></div>
@@ -113,15 +113,15 @@ footer li{margin:.3rem 0}
   <div class="container">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">Acervo preservado</p>
+        <p class="eyebrow">Série histórica</p>
         <h2>Boletins publicados por ano</h2>
-        <p class="lead">7.123 edições do boletim preservadas por ano, com SHA-256, URL original e datas registradas no manifesto de proveniência.</p>
+        <p class="lead">7.123 edições do boletim analisadas, distribuídas por ano, a partir de um acervo com SHA-256, URL original e datas registradas em manifesto de proveniência.</p>
       </div>
     </div>
 
     <div class="chart-card chart-card--full" style="margin-bottom:2rem">
       <h3>Boletins por ano</h3>
-      <p class="sub">Edições preservadas no acervo · manifesto com 7.123 arquivos validados e 10 falhas registradas</p>
+      <p class="sub">Edições analisadas · manifesto do acervo com 7.123 arquivos validados e 10 falhas registradas</p>
       <canvas id="chartBoletins" role="img" aria-label="Gráfico de boletins por ano"></canvas>
     </div>
 
@@ -175,7 +175,7 @@ footer li{margin:.3rem 0}
         <p class="muted" style="font-size:.9rem;margin-top:0.5rem" id="metodoLimitacoes"></p>
       </div>
     </div>
-    <p class="muted" style="font-size:.82rem;margin-top:1rem">Dados abertos nos termos da Lei nº 12.527/2011 (LAI). Os Boletins de Pessoal são atos administrativos públicos; este painel prioriza agregações e não publica visualizações nominais. Conjunto de dados completo, acervo HTML preservado e documentação metodológica no <a href="https://github.com/LABHDUFBA/data-ufba" rel="noopener">repositório LABHDUFBA/data-ufba</a>.</p>
+    <p class="muted" style="font-size:.82rem;margin-top:1rem">Dados abertos nos termos da Lei nº 12.527/2011 (LAI). Os Boletins de Pessoal são atos administrativos públicos; este painel prioriza agregações e não publica visualizações nominais. O acervo original dos boletins é mantido pela Universidade, no <a href="https://prodep.ufba.br" rel="noopener">portal da PRODEP</a>. Os dados agregados, a camada analítica e a documentação metodológica estão no <a href="https://github.com/LABHDUFBA/data-ufba" rel="noopener">repositório LABHDUFBA/data-ufba</a>.</p>
   </div>
 </section>
 
@@ -185,7 +185,7 @@ footer li{margin:.3rem 0}
   <div class="container">
     <div class="footer__grid">
       <div>
-        <h2>Central de Dados</h2>
+        <h2>Observatório de Dados</h2>
         <ul>
           <li>Equipe de pesquisadores do LABHDUFBA</li>
           <li>Laboratório de Humanidades Digitais — UFBA</li>
@@ -288,7 +288,7 @@ function renderTudo() {
   // Metodologia
   document.getElementById('metodoFontes').innerHTML =
     '<li><strong>Fonte primária:</strong> Boletim de Pessoal da PRODEP/UFBA (sistema legado cgp.ufba.br, HTTP), coleta sequencial com retomada e validação de conteúdo.</li>' +
-    '<li><strong>Acervo:</strong> 7.123 boletins (23/01/1990 a 21/08/2026) preservados em HTML original, byte a byte, com SHA-256 e URL original no manifesto.</li>' +
+    '<li><strong>Acervo:</strong> 7.123 boletins (23/01/1990 a 21/08/2026) preservados em HTML original, byte a byte, com SHA-256 e URL original no manifesto, no repositório de dados do projeto. O acervo original permanece sob custódia da Universidade, no <a href="https://prodep.ufba.br" rel="noopener">portal da PRODEP</a>.</li>' +
     '<li><strong>Camada canônica:</strong> 196.465 ocorrências extraídas das tabelas HTML em JSONL particionado por ano, com referência verificável ao documento original (caminho, URL e SHA-256).</li>' +
     '<li><strong>Camada analítica:</strong> inventário determinístico de rótulos e agregações anuais gerados por scripts versionados do repositório de dados.</li>';
   document.getElementById('metodoLimitacoes').textContent =
