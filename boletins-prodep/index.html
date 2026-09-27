@@ -175,7 +175,7 @@ footer li{margin:.3rem 0}
         <p class="muted" style="font-size:.9rem;margin-top:0.5rem" id="metodoLimitacoes"></p>
       </div>
     </div>
-    <p class="muted" style="font-size:.82rem;margin-top:1rem">Dados abertos nos termos da Lei nº 12.527/2011 (LAI). Os Boletins de Pessoal são atos administrativos públicos; este painel prioriza agregações e não publica visualizações nominais. O acervo original dos boletins é mantido pela Universidade, no <a href="https://prodep.ufba.br" rel="noopener">portal da PRODEP</a>. Os dados agregados, a camada analítica e a documentação metodológica estão no <a href="https://github.com/LABHDUFBA/data-ufba" rel="noopener">repositório LABHDUFBA/data-ufba</a>.</p>
+    <p class="muted" style="font-size:.82rem;margin-top:1rem">Dados abertos nos termos da Lei nº 12.527/2011 (LAI). Os Boletins de Pessoal são atos administrativos públicos; este painel prioriza agregações e não publica visualizações nominais. O acervo original dos boletins é mantido pela Universidade, no <a href="https://prodep.ufba.br" rel="noopener">portal da PRODEP</a>, que é onde os boletins são efetivamente disponibilizados.</p>
   </div>
 </section>
 
@@ -203,7 +203,6 @@ footer li{margin:.3rem 0}
       <div>
         <h2>Dados</h2>
         <ul>
-          <li><a href="https://github.com/LABHDUFBA/data-ufba" rel="noopener">Repositório (GitHub)</a></li>
           <li>Licença: dados públicos (LAI)</li>
         </ul>
       </div>
@@ -288,9 +287,9 @@ function renderTudo() {
   // Metodologia
   document.getElementById('metodoFontes').innerHTML =
     '<li><strong>Fonte primária:</strong> Boletim de Pessoal da PRODEP/UFBA (sistema legado cgp.ufba.br, HTTP), coleta sequencial com retomada e validação de conteúdo.</li>' +
-    '<li><strong>Acervo:</strong> 7.123 boletins (23/01/1990 a 21/08/2026) preservados em HTML original, byte a byte, com SHA-256 e URL original no manifesto, no repositório de dados do projeto. O acervo original permanece sob custódia da Universidade, no <a href="https://prodep.ufba.br" rel="noopener">portal da PRODEP</a>.</li>' +
+    '<li><strong>Acervo:</strong> 7.123 boletins (23/01/1990 a 21/08/2026) catalogados a partir do HTML original, com SHA-256 e URL original registrados em manifesto de proveniência. Os boletins são disponibilizados pela Universidade, no <a href="https://prodep.ufba.br" rel="noopener">portal da PRODEP</a>, e não são redistribuídos por este site.</li>' +
     '<li><strong>Camada canônica:</strong> 196.465 ocorrências extraídas das tabelas HTML em JSONL particionado por ano, com referência verificável ao documento original (caminho, URL e SHA-256).</li>' +
-    '<li><strong>Camada analítica:</strong> inventário determinístico de rótulos e agregações anuais gerados por scripts versionados do repositório de dados.</li>';
+    '<li><strong>Camada analítica:</strong> inventário determinístico de rótulos e agregações anuais gerados por scripts de processamento versionados.</li>';
   document.getElementById('metodoLimitacoes').textContent =
     'O catálogo público da fonte apresenta lacunas: 10 boletins listados não puderam ser baixados e permanecem registrados como falhas no manifesto. A última data exibida no catálogo (01/12/2026) é posterior à data da coleta e foi preservada como retornada pela fonte. Pessoas distintas usa igualdade textual exata e não resolve homônimos ou variantes de nome; a soma anual conta novamente a mesma pessoa em anos diferentes. A taxonomia interpretativa das ocorrências está em revisão institucional e, por isso, não é apresentada neste painel.';
 }
