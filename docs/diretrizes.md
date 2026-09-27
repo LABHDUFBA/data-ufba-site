@@ -5,6 +5,11 @@ que decisões de escopo, taxonomia e priorização não voltem a ser tomadas por
 analogia. Escrito em setembro de 2026, a partir de revisão do estado do site e da
 discussão sobre fragmentação de dados públicos.
 
+> **Normativo.** Este documento é a fonte canônica da definição do projeto. A versão
+> operacional — regras práticas para quem for editar o repositório — está em
+> [`AGENTS.md`](../AGENTS.md). Em caso de divergência, vale este arquivo, e a
+> divergência deve ser corrigida.
+
 ---
 
 ## 1. Problema que este documento resolve
